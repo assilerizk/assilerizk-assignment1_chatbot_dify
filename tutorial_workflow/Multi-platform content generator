@@ -1,0 +1,857 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: Multi-platform content generator
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai:0.2.8@aae2be0913b8c6f0b80cff58e08d7a8b4c214569b41778413fcaea204561ff16
+    version: null
+kind: app
+version: 0.5.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 50
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        single_chunk_attachment_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: parameter-extractor
+      id: 1771817762058-source-1771820322683-target
+      source: '1771817762058'
+      sourceHandle: source
+      target: '1771820322683'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: parameter-extractor
+        targetType: if-else
+      id: 1771820322683-source-1771820449936-target
+      source: '1771820322683'
+      sourceHandle: source
+      target: '1771820449936'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: end
+      id: 1771820449936-true-1771820545375-target
+      source: '1771820449936'
+      sourceHandle: 'true'
+      target: '1771820545375'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: list-operator
+      id: 1771820449936-false-1771820624978-target
+      selected: false
+      source: '1771820449936'
+      sourceHandle: 'false'
+      target: '1771820624978'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: list-operator
+      id: 1771820449936-false-1771820639622-target
+      source: '1771820449936'
+      sourceHandle: 'false'
+      target: '1771820639622'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: list-operator
+        targetType: document-extractor
+      id: 1771820639622-source-1771820737732-target
+      source: '1771820639622'
+      sourceHandle: source
+      target: '1771820737732'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 1771820737732--1771820833742-target
+      source: '1771820737732'
+      sourceHandle: source
+      target: '1771820833742'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: list-operator
+        targetType: llm
+      id: 1771820624978-source-1771820833742-target
+      source: '1771820624978'
+      sourceHandle: source
+      target: '1771820833742'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: iteration
+      id: 1771820833742-source-1771821181922-target
+      source: '1771820833742'
+      sourceHandle: source
+      target: '1771821181922'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1771821181922'
+        sourceType: iteration-start
+        targetType: llm
+      id: 1771821181922start-source-1771821201175-target
+      source: 1771821181922start
+      sourceHandle: source
+      target: '1771821201175'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1771821181922'
+        sourceType: llm
+        targetType: llm
+      id: 1771821201175-source-1771821232135-target
+      source: '1771821201175'
+      sourceHandle: source
+      target: '1771821232135'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: iteration
+        targetType: template-transform
+      id: 1771821181922-source-1771821570551-target
+      source: '1771821181922'
+      sourceHandle: source
+      target: '1771821570551'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: end
+      id: 1771821570551-source-1771821778427-target
+      source: '1771821570551'
+      sourceHandle: source
+      target: '1771821778427'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: User Input
+        type: start
+        variables:
+        - default: ''
+          hint: ''
+          label: Draft
+          max_length: 2048
+          options: []
+          placeholder: ''
+          required: false
+          type: paragraph
+          variable: draft
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          default: ''
+          hint: ''
+          label: Upload File (≤ 10)
+          max_length: 10
+          options: []
+          placeholder: ''
+          required: false
+          type: file-list
+          variable: user_file
+        - default: ''
+          hint: ''
+          label: Voice & Tone
+          max_length: 2048
+          options: []
+          placeholder: ''
+          required: false
+          type: paragraph
+          variable: voice_and_tone
+        - default: ''
+          hint: ''
+          label: Target Platform (≤ 10)
+          max_length: 256
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: platform
+        - default: English
+          hint: ''
+          label: Language
+          options:
+          - English
+          - 日本語
+          - 简体中文
+          placeholder: ''
+          required: true
+          type: select
+          variable: language
+      height: 213
+      id: '1771817762058'
+      position:
+        x: 74.66666666666663
+        y: 261
+      positionAbsolute:
+        x: 74.66666666666663
+        y: 261
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        instruction: "# TASK DESCRIPTION\nParse platform names from input and output\
+          \ as a JSON array.\n\n## PROCESSING RULES\n- Support multiple delimiters:\
+          \ commas, semicolons, spaces, line breaks, \"and\", \"&\", \"|\", etc.\n\
+          - Standardize common platform name variants (twitter/X→Twitter, insta→Instagram,\
+          \ etc.)\n- Remove duplicates and invalid entries\n- Preserve unknown but\
+          \ reasonable platform names\n\n## OUTPUT REQUIREMENTS\n- Success: [\"Platform1\"\
+          , \"Platform2\"] \n- No platforms found: [No platforms identified. Please\
+          \ enter a valid platform name.]\n\n## EXAMPLES\n- Input: \"twitter, linkedin\"\
+          \ → [\"Twitter\", \"LinkedIn\"]\n- Input: \"x and insta\" → [\"Twitter\"\
+          , \"Instagram\"]\n- Input: \"invalid content\" → [No platforms identified.\
+          \ Please enter a valid platform name.]"
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-5-nano
+          provider: langgenius/openai/openai
+        parameters:
+        - description: Identify and extract the platform(s) for which the user wants
+            to create tailored content.
+          name: platform
+          required: true
+          type: array[string]
+        query:
+        - '1771817762058'
+        - platform
+        reasoning_mode: prompt
+        selected: false
+        title: Parameter Extractor
+        type: parameter-extractor
+        vision:
+          enabled: false
+      height: 88
+      id: '1771820322683'
+      position:
+        x: 382
+        y: 282
+      positionAbsolute:
+        x: 382
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: 3153ad3b-3adf-4ef4-b25c-25edead41608
+            value: No platforms identified. Please enter a valid platform name.
+            varType: array[string]
+            variable_selector:
+            - '1771820322683'
+            - platform
+          id: 'true'
+          logical_operator: and
+        selected: false
+        title: IF/ELSE
+        type: if-else
+      height: 124
+      id: '1771820449936'
+      position:
+        x: 684
+        y: 282
+      positionAbsolute:
+        x: 684
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        outputs:
+        - value_selector:
+          - '1771820322683'
+          - platform
+          value_type: array[string]
+          variable: platform
+        selected: false
+        title: Output
+        type: end
+      height: 89
+      id: '1771820545375'
+      position:
+        x: 998.3333333333333
+        y: 178.66666666666669
+      positionAbsolute:
+        x: 998.3333333333333
+        y: 178.66666666666669
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        extract_by:
+          enabled: false
+          serial: '1'
+        filter_by:
+          conditions:
+          - comparison_operator: in
+            key: type
+            value:
+            - image
+          enabled: true
+        item_var_type: file
+        limit:
+          enabled: false
+          size: 10
+        order_by:
+          enabled: false
+          key: ''
+          value: asc
+        selected: false
+        title: IMAGE
+        type: list-operator
+        var_type: array[file]
+        variable:
+        - '1771817762058'
+        - user_file
+      height: 93
+      id: '1771820624978'
+      position:
+        x: 998.3333333333333
+        y: 405
+      positionAbsolute:
+        x: 998.3333333333333
+        y: 405
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        extract_by:
+          enabled: false
+          serial: '1'
+        filter_by:
+          conditions:
+          - comparison_operator: in
+            key: type
+            value:
+            - document
+          enabled: true
+        item_var_type: file
+        limit:
+          enabled: false
+          size: 10
+        order_by:
+          enabled: false
+          key: ''
+          value: asc
+        selected: false
+        title: DOCUMENT
+        type: list-operator
+        var_type: array[file]
+        variable:
+        - '1771817762058'
+        - user_file
+      height: 93
+      id: '1771820639622'
+      position:
+        x: 998.3333333333333
+        y: 539.1999999999992
+      positionAbsolute:
+        x: 998.3333333333333
+        y: 539.1999999999992
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        is_array_file: true
+        selected: false
+        title: Doc Extractor
+        type: document-extractor
+        variable_selector:
+        - '1771820639622'
+        - result
+      height: 105
+      id: '1771820737732'
+      position:
+        x: 1304.7054606119787
+        y: 539.1999999999992
+      positionAbsolute:
+        x: 1304.7054606119787
+        y: 539.1999999999992
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params: {}
+          mode: chat
+          name: gpt-5-nano
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: 63bec728-9f97-4380-8987-7a94f94642ae
+          role: system
+          text: '# PROVIDED MATERIALS
+
+            {{#1771820737732.text#}}
+
+            {{#1771817762058.draft#}}
+
+
+            # ROLE & TASK
+
+            You are a content strategist. Analyze the provided materials and create
+            a comprehensive content foundation for multi-platform social media optimization.
+
+
+            # ANALYSIS PRINCIPLES
+
+            - Work exclusively with provided information—no external assumptions
+
+            - Focus on extraction, synthesis, and strategic interpretation
+
+            - Identify compelling and actionable elements
+
+            - Prepare insights adaptable across different platforms
+
+
+            # REQUIRED ANALYSIS
+
+            Deliver structured analysis with:
+
+
+            ## 1. CORE MESSAGE
+
+            - Central theme, purpose, objective
+
+            - Key value or benefit being communicated
+
+
+            ## 2. ESSENTIAL CONTENT ELEMENTS
+
+            - Primary topics, facts, statistics, data points
+
+            - Notable quotes, testimonials, key statements
+
+            - Features, benefits, characteristics mentioned
+
+            - Dates, locations, contextual details
+
+
+            ## 3. STRATEGIC INSIGHTS
+
+            - What makes content compelling/unique
+
+            - Emotional/rational appeals present
+
+            - Credibility factors, proof points
+
+            - Competitive advantages highlighted
+
+
+            ## 4. ENGAGEMENT OPPORTUNITIES
+
+            - Discussion points, questions emerging
+
+            - Calls-to-action, next steps suggested
+
+            - Interactive/participation opportunities
+
+            - Trending themes touched upon
+
+
+            ## 5. PLATFORM OPTIMIZATION FOUNDATION
+
+            - High-impact: Quick, shareable formats
+
+            - Professional: Business-focused discussions
+
+            - Community: Interaction and sharing
+
+            - Visual: Enhanced with strong visuals
+
+
+            ## 6. SUPPORTING DETAILS
+
+            - Metrics, numbers, quantifiable results
+
+            - Direct quotes, testimonials
+
+            - Technical details, specifications
+
+            - Background context available'
+        selected: false
+        title: Integrate Info
+        type: llm
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1771820639622'
+            - result
+          enabled: true
+      height: 88
+      id: '1771820833742'
+      position:
+        x: 1633.3721272786456
+        y: 405
+      positionAbsolute:
+        x: 1633.3721272786456
+        y: 405
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        error_handle_mode: terminated
+        flatten_output: true
+        height: 176
+        is_parallel: true
+        iterator_input_type: array[string]
+        iterator_selector:
+        - '1771820322683'
+        - platform
+        output_selector:
+        - '1771821232135'
+        - structured_output
+        output_type: array[object]
+        parallel_nums: 10
+        selected: false
+        start_node_id: 1771821181922start
+        title: Iteration
+        type: iteration
+        width: 688
+      height: 176
+      id: '1771821181922'
+      position:
+        x: 1935.3721272786456
+        y: 405
+      positionAbsolute:
+        x: 1935.3721272786456
+        y: 405
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 688
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1771821181922start
+      parentId: '1771821181922'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: 1959.3721272786456
+        y: 473
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1771821181922'
+        model:
+          completion_params: {}
+          mode: chat
+          name: gpt-5-nano
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: ac98f985-9235-44ac-9c55-ad67cc6c7762
+          role: system
+          text: "# ROLE & TASK\nYou are a social media expert. Analyze the platform\
+            \ \"{{#1771821181922.item#}} \" and provide content creation guidelines.\n\
+            \n# ANALYSIS REQUIRED\nFor the given platform, provide:\n\n## 1. PLATFORM\
+            \ PROFILE\n- Platform type and category\n- Target audience characteristics\n\
+            \n## 2. CONTENT GUIDELINES\n- Optimal content length (characters/words)\n\
+            - Recommended tone (professional/casual/conversational)\n- Formatting\
+            \ best practices (line breaks, emojis, etc.)\n\n## 3. ENGAGEMENT STRATEGY\n\
+            - Hashtag recommendations (quantity and style)\n- Call-to-action best\
+            \ practices\n- Algorithm optimization tips\n\n## 4. TECHNICAL SPECS\n\
+            - Character/word limits\n- Visual content requirements\n- Special formatting\
+            \ needs\n\n## 5. PLATFORM-SPECIFIC NOTES\n- Unique features or recent\
+            \ changes\n- Industry-specific considerations\n- Community engagement\
+            \ approaches\n\n# OUTPUT REQUIREMENTS\n- For recognized platforms: Provide\
+            \ specific guidelines\n- For unknown platforms: Base recommendations on\
+            \ similar platforms\n- Focus on actionable, practical advice\n- Be concise\
+            \ but comprehensive\n\n# OUTPUT FORMAT EXAMPLES\n```json  \n{  \n  \"\
+            platform_name\": \"{{#1771821181922.item#}}\",  \n  \"platform_type\"\
+            : \"social_media/professional_network/visual_platform/microblogging\"\
+            ,  \n  \"content_guidelines\": {  \n    \"max_length\": \"character/word\
+            \ limit\",  \n    \"optimal_length\": \"recommended range\",  \n    \"\
+            tone\": \"professional/casual/conversational/authoritative\",  \n    \"\
+            hashtag_strategy\": \"quantity and placement guidelines\",  \n    \"formatting\"\
+            : \"line breaks, emojis, mentions guidelines\",  \n    \"engagement_focus\"\
+            : \"comments/shares/likes/retweets\",  \n    \"call_to_action\": \"appropriate\
+            \ CTA style\"  \n  },  \n  \"special_considerations\": \"Any unique platform\
+            \ requirements or recent changes\",  \n  \"confidence_level\": \"high/medium/low\
+            \ based on platform recognition\"  \n}"
+        selected: false
+        title: identify style
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1771821201175'
+      parentId: '1771821181922'
+      position:
+        x: 128
+        y: 68
+      positionAbsolute:
+        x: 2063.3721272786456
+        y: 473
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1771821181922'
+        model:
+          completion_params: {}
+          mode: chat
+          name: gpt-5-nano
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: 27926623-e5db-44e7-9055-1e47a81b56eb
+          role: system
+          text: "# ROLE & TASK\nYou are an expert social media content creator. Generate\
+            \ publication-ready content that matches platform guidelines, incorporates\
+            \ source information, and follows specified voice/tone and language requirements.\n\
+            \n# INPUT MATERIALS\n## 1. PLATFORM GUIDELINES\n{{#1771821201175.text#}}\n\
+            \n## 2. SOURCE INFORMATION\n{{#1771820833742.text#}}\n\n## 3. VOICE &\
+            \ TONE (OPTIONAL)\n{{#1771817762058.voice_and_tone#}}\n\n## 4. LANGUAGE\
+            \ REQUIREMENT\n- Generate ALL content exclusively in: User Input/language\n\
+            - No mixing of languages whatsoever\n- Adapt platform terminology to the\
+            \ specified language\n\n# CONTENT REQUIREMENTS\n- Follow platform guidelines\
+            \ exactly (format, length, tone, hashtags)\n- Integrate source information\
+            \ effectively (key messages, data, value props)\n- Apply voice & tone\
+            \ consistently (if provided)\n- Optimize for platform-specific engagement\n\
+            - Ensure cultural appropriateness for the specified language\n\n# OUTPUT\
+            \ FORMAT\n- Generate ONLY the final social media post content. No explanations\
+            \ or meta-commentary. Content must be immediately copy-paste ready.\n\
+            - Maximum heading level: ## (H2) - never use # (H1)\n- No horizontal dividers:\
+            \ avoid ---\n\n# QUALITY CHECKLIST\n✅ Platform guidelines followed\n✅\
+            \ Source information integrated  \n✅ Voice/tone consistent (when provided)\n\
+            ✅ Language consistency maintained\n✅ Engagement optimized\n✅ Publication\
+            \ ready"
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              platform_name:
+                type: string
+              post_content:
+                type: string
+            required:
+            - platform_name
+            - post_content
+            type: object
+        structured_output_enabled: true
+        title: create content
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1771821232135'
+      parentId: '1771821181922'
+      position:
+        x: 408.14990847999934
+        y: 68
+      positionAbsolute:
+        x: 2343.522035758645
+        y: 473
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 1002
+    - data:
+        selected: false
+        template: "{% for item in output %}      \r\n# \U0001F4F1 {{ item.platform_name\
+          \ }}  \r\n{{ item.post_content }}\r\n\r\n{% endfor %} "
+        title: Template
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1771821181922'
+          - output
+          value_type: array[object]
+          variable: output
+      height: 52
+      id: '1771821570551'
+      position:
+        x: 2683.3721272786456
+        y: 405
+      positionAbsolute:
+        x: 2683.3721272786456
+        y: 405
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        outputs:
+        - value_selector:
+          - '1771821570551'
+          - output
+          value_type: string
+          variable: output
+        selected: false
+        title: 'Output '
+        type: end
+      height: 89
+      id: '1771821778427'
+      position:
+        x: 2985.3721272786456
+        y: 405
+      positionAbsolute:
+        x: 2985.3721272786456
+        y: 405
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: -622.8857503360546
+      y: 19.92133261412124
+      zoom: 0.4651360787227558
+  rag_pipeline_variables: []
